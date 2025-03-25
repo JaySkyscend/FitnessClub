@@ -8,6 +8,8 @@
             <form>
                 <header>
                     <button name="action_activate" type="object" string="Activate" class="oe_highlight"/>
+                    <button name="action_deactivate" type="object" string="Deactivate" class="oe_secondary"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done"/>
                 </header>
                 <sheet>
                     <group>
