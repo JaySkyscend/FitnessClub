@@ -6,26 +6,30 @@
         <field name="model">fitness.member</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="action_activate" type="object" string="Activate" class="oe_highlight"/>
+                </header>
                 <sheet>
                     <group>
-                        <field name="name" placeholder="Enter Full Name"/>
-                        <field name="age" required="True"/>
-                        <field name="weight"/>
-                        <field name="address"/>
-                        <field name="membership_type" widget="radio"/>
+                        <field name="name" placeholder="Enter Full Name" help="Enter The Full Name as Jay Patel"/>
+                        <field name="age" required="1" help="Enter your current Age"/>
+                        <field name="weight" help="Enter your weight"/>
+                        <field name="address" help="Enter your current address"/>
+                        <field name="membership_type" widget="radio" help="Choose Membership type from below"/>
                     </group>
                     <group>
-                        <field name="health_details" />
-                        <field name="join_date"/>
-                        <field name="last_visit"/>
-                        <field name="priority" widget="priority"/>
+                        <field name="health_details" help="Write the health details of Member" />
+                        <field name="join_date" help="Enter the Joining Data"/>
+                        <field name="last_visit" help="Enter the last Visiting date and time"/>
+                        <field name="priority" widget="priority" help="Enter the priority like 1 star, 2 star etc."/>
                     </group>
                     <group>
-                        <field name="email"/>
-                        <field name="website"/>
+                        <field name="email" help="Enter the email Address"/>
+                        <field name="website" help="Enter the website "/>
                     </group>
                     <group>
-                        <field name="password" password="True"/>
+                        <field name="membership_code" help="Enter the membership code of 4 letters"/>
+                        <field name="password" password="True" help="Enter the strong Password"/>
                     </group>
                 </sheet>
             </form>
@@ -38,6 +42,7 @@
         <field name="model">fitness.member</field>
         <field name="arch" type="xml">
             <list>
+                <field name="membership_code"/>
                 <field name="name"/>
                 <field name="age"/>
                 <field name="weight"/>
