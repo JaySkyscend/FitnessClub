@@ -10,6 +10,7 @@
       'views/fitness_member_views.xml',
       'views/fitness_trainer_view.xml',
       'views/fitness_session_views.xml',
+      'views/fitness_equipment_views.xml',
 
     ],
     'installable':True,

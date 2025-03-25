@@ -36,6 +36,11 @@
                         </list>
                     </field>
 
+                    <seperator string="Used Equipment"/>
+                    <group>
+                        <field name="equipment_ids" widget="many2many_tags"/>
+                    </group>
+
                     <seperator string="Membership Details" />
 
                     <group>
