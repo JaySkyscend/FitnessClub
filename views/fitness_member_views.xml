@@ -41,7 +41,7 @@
 
                         <page string="Contact Info">
                     <group>
-                        <field name="email" help="Enter the email Address"/>
+                        <field name="email" nolable="1" help="Enter the email Address"/>
                         <field name="website" help="Enter the website "/>
                     </group>
                         </page>
