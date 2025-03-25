@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_fitness_admin,Fitness Club Admin,model_fitness_member,group_fitness_admin,1,1,1,1
+access_fitness_user,Fitness Club User,model_fitness_member,group_fitness_user,1,0,0,0

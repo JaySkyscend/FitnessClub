@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="view_fitness_member_form" model="ir.ui.view">
+        <field name="name">fitness.member.form</field>
+        <field name="model">fitness.member</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" placeholder="Enter Full Name"/>
+                        <field name="age" required="True"/>
+                        <field name="weight"/>
+                        <field name="address"/>
+                        <field name="membership_type" widget="radio"/>
+                    </group>
+                    <group>
+                        <field name="health_details" />
+                        <field name="join_date"/>
+                        <field name="last_visit"/>
+                        <field name="priority" widget="priority"/>
+                    </group>
+                    <group>
+                        <field name="email"/>
+                        <field name="website"/>
+                    </group>
+                    <group>
+                        <field name="password" password="True"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_fitness_member_list" model="ir.ui.view">
+        <field name="name">fitness.member.list</field>
+        <field name="model">fitness.member</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="age"/>
+                <field name="weight"/>
+                <field name="membership_type"/>
+                <field name="is_active"/>
+            </list>
+        </field>
+    </record>
+
+
+    <record id="view_fitness_member_search" model="ir.ui.view">
+        <field name="name">fitness.member.search</field>
+        <field name="model">fitness.member</field>
+        <field name="arch" type="xml">
+        <search>
+            <field name="name"/>
+            <field name="age"/>
+            <field name="membership_type"/>
+            <field name="is_active"/>
+        </search>
+        </field>
+    </record>
+
+
+
+    <record id="action_fitness_member" model="ir.actions.act_window">
+        <field name="name">Fitness Members</field>
+        <field name="res_model">fitness.member</field>
+        <field name="view_mode">list,form,search</field>
+    </record>
+
+
+    <menuitem id="menu_fitness_club_root" name="Fitness Club" sequence="1"/>
+    <menuitem id="menu_fitness_members" parent="menu_fitness_club_root" action="action_fitness_member" name="Members" sequence="2"/>
+
+</odoo>
