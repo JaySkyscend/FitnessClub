@@ -7,4 +7,8 @@
     <record id="group_fitness_user" model="res.groups">
         <field name="name">Fitness Club User</field>
     </record>
+
+    <record id="group_fitness_trainer" model="res.groups">
+        <field name="name">Fitness Club Trainers</field>
+    </record>
 </odoo>
