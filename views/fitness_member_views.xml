@@ -15,11 +15,14 @@
 
                 <sheet>
                     <group>
+
+                        <field name="membership_code" help="Enter the membership code of 4 letters"/>
                         <field name="name" placeholder="Enter Full Name" help="Enter The Full Name as Jay Patel"/>
                         <field name="age" required="1" help="Enter your current Age"/>
                         <field name="weight" help="Enter your weight"/>
                         <field name="address" help="Enter your current address"/>
                         <field name="is_active" invisible="1"/>
+                        <field name="password" password="True" help="Enter the strong Password"/>
                     </group>
 
                     <seperator string="Membership Details" ></seperator>
@@ -45,10 +48,7 @@
                         <field name="website" help="Enter the website "/>
                     </group>
                         </page>
-                    <group>
-                        <field name="membership_code" help="Enter the membership code of 4 letters"/>
-                        <field name="password" password="True" help="Enter the strong Password"/>
-                    </group>
+
                     </notebook>
                 </sheet>
 
