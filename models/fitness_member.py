@@ -12,6 +12,7 @@ class FitnessMember(models.Model):
     age = fields.Integer(string="Age", required=True)
     weight = fields.Float(string="Weight (kg)",digits=(6,3))
     trainer_id = fields.Many2one('fitness.trainer',string="Assigned Trainer")
+    session_ids = fields.One2many('fitness.session','member_id',string="Sessions")
     is_active = fields.Boolean(string="Active",default=True)
     address = fields.Text(string="Address")
     health_details = fields.Html(string="Health Details",)

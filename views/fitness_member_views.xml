@@ -26,7 +26,17 @@
                         <field name="password" password="True" help="Enter the strong Password"/>
                     </group>
 
-                    <seperator string="Membership Details" ></seperator>
+                    <seperator string="Fitness Sessions"/>
+
+                    <field name="session_ids">
+                        <list editable="bottom">
+                            <field name="name"/>
+                            <field name="date"/>
+                            <field name="duration"/>
+                        </list>
+                    </field>
+
+                    <seperator string="Membership Details" />
 
                     <group>
                         <field name="membership_type" widget="radio" help="Choose Membership type from below"/>
