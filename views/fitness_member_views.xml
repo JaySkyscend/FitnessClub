@@ -25,20 +25,36 @@
 
                     <group>
                         <field name="membership_type" widget="radio" help="Choose Membership type from below"/>
-                        <field name="health_details" help="Write the health details of Member" />
                         <field name="join_date" help="Enter the Joining Data"/>
                         <field name="last_visit" help="Enter the last Visiting date and time"/>
                         <field name="priority" widget="priority" help="Enter the priority like 1 star, 2 star etc."/>
                     </group>
+
+                    <notebook>
+
+                         <page string="Health Details">
+                             <group>
+                                 <field name="health_details"/>
+                             </group>
+                         </page>
+
+                        <page string="Contact Info">
                     <group>
                         <field name="email" help="Enter the email Address"/>
                         <field name="website" help="Enter the website "/>
                     </group>
+                        </page>
                     <group>
                         <field name="membership_code" help="Enter the membership code of 4 letters"/>
                         <field name="password" password="True" help="Enter the strong Password"/>
                     </group>
+                    </notebook>
                 </sheet>
+
+                <footer>
+                    <button string="Save" type="object" name="action_save"/>
+                    <button string="Cancel" type="object" name="action_cancel" />
+                </footer>
             </form>
         </field>
     </record>

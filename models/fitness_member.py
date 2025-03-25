@@ -38,3 +38,9 @@ class FitnessMember(models.Model):
     def deactivate(self):
         self.write({'state':'draft'})
 
+
+    def action_save(self):
+        return True
+
+    def action_cancel(self):
+        return {'type':'ir.actions.act_window_close'}
