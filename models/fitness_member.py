@@ -32,3 +32,9 @@ class FitnessMember(models.Model):
     membership_code = fields.Char(string="Membership Code",size=4)
     password = fields.Char(string="Password",password=True)
 
+    def activate(self):
+        self.write({'state':'confirmed'})
+
+    def deactivate(self):
+        self.write({'state':'draft'})
+
