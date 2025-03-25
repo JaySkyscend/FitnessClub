@@ -23,6 +23,12 @@ class FitnessMember(models.Model):
         ('platinum','Platinum')
     ], string="Membership Type", default='bronze' )
 
+    state = fields.Selection([
+        ('draft','Draft'),
+        ('confirmed','Confirmed'),
+        ('done','Done')
+    ], string="Status",default='draft',tracking=True)
+
     email = fields.Char(string='Email')
     website = fields.Char(string="Website",widget="url")
 
@@ -33,10 +39,10 @@ class FitnessMember(models.Model):
     password = fields.Char(string="Password",password=True)
 
     def activate(self):
-        self.write({'state':'confirmed'})
+        self.write({'state':'confirmed','active':True})
 
     def deactivate(self):
-        self.write({'state':'draft'})
+        self.write({'state':'draft','active':False})
 
 
     def action_save(self):

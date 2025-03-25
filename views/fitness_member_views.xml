@@ -9,7 +9,7 @@
                 <header>
                     <button name="activate" type="object" string="Activate" class="oe_highlight"/>
                     <button name="deactivate" type="object" string="Deactivate" class="oe_secondary"/>
-<!--                    <field name="is_active" widget="statusbar" statusbar_visible="draft,confirmed,done"/>-->
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done"/>
                 </header>
 
 
@@ -19,9 +19,10 @@
                         <field name="age" required="1" help="Enter your current Age"/>
                         <field name="weight" help="Enter your weight"/>
                         <field name="address" help="Enter your current address"/>
+                        <field name="is_active" invisible="1"/>
                     </group>
 
-                    <seperator string="Membership Details"></seperator>
+                    <seperator string="Membership Details" ></seperator>
 
                     <group>
                         <field name="membership_type" widget="radio" help="Choose Membership type from below"/>
