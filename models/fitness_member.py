@@ -9,6 +9,7 @@ class FitnessMember(models.Model):
 
 
     name = fields.Char(string="Member Name",required=True,placeholder="Enter Full Name")
+    image = fields.Binary(string="Profile Picture")
     related_record = fields.Reference(
         selection=[('fitness.trainer','Trainer'),
                    ('res.partner','Customer')],
