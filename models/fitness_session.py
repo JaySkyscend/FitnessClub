@@ -2,7 +2,7 @@
 
 
 from odoo import fields,models
-from odoo.api import ondelete
+
 
 
 class FitnessSession(models.Model):
@@ -16,4 +16,11 @@ class FitnessSession(models.Model):
     trainer_id = fields.Many2one('fitness.trainer',string="Trainer")
     notes = fields.Text(string="Notes")
 
-
+    related_record = fields.Reference(
+        selection=[
+            ('fitness.trainer', 'Trainer'),
+            ('fitness.member', 'Member'),
+            ('res.partner', 'Customer')
+        ],
+        string="Related Record"
+    )

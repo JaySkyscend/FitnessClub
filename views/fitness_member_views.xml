@@ -18,6 +18,7 @@
 
                         <field name="membership_code" help="Enter the membership code of 4 letters"/>
                         <field name="name" placeholder="Enter Full Name" help="Enter The Full Name as Jay Patel"/>
+                        <field name="related_record"/>
                         <field name="age" required="1" help="Enter your current Age"/>
                         <field name="weight" help="Enter your weight"/>
                         <field name="amount"/>

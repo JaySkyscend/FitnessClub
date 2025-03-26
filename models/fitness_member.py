@@ -9,6 +9,11 @@ class FitnessMember(models.Model):
 
 
     name = fields.Char(string="Member Name",required=True,placeholder="Enter Full Name")
+    related_record = fields.Reference(
+        selection=[('fitness.trainer','Trainer'),
+                   ('res.partner','Customer')],
+        string="Related Record"
+    )
     age = fields.Integer(string="Age", required=True)
     weight = fields.Float(string="Weight (kg)",digits=(6,3))
     amount = fields.Monetary(string="Membership Fee",currency_field="currency_id")
