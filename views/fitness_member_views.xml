@@ -44,6 +44,7 @@
                             <field name="distance_covered"/>
                             <field name="total_value" readonly="1"/>
                             <field name="computed_value" readonly="1"/>
+                            <field name="progress_percentage" widget="progressbar" readonly="1"/>
                         </list>
                     </field>
 

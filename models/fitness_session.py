@@ -32,8 +32,17 @@ class FitnessSession(models.Model):
     total_value = fields.Float(string="Total Value",compute="_compute_values",store=False)
     computed_value = fields.Float(string="Computed Value",compute="_compute_values",store=False)
 
+    progress_percentage = fields.Integer(string="Completion %",compute="_compute_percentage",store=False)
     @api.depends('calories_burned','heart_rate_avg','distance_covered')
     def _compute_values(self):
         for record in self:
             record.total_value = (record.calories_burned or 0) + (record.heart_rate_avg or 0) + (record.distance_covered or 0)
             record.computed_value = (record.calories_burned or 0 ) + (record.distance_covered or 0 ) - (record.heart_rate_avg or 0)
+
+    @api.depends('total_value','computed_value')
+    def _compute_percentage(self):
+        for record in self:
+            if record.total_value:
+                record.progress_percentage = int((record.computed_value / record.total_value) * 100)
+            else:
+                record.progress_percentage = 0
