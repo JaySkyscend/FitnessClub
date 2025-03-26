@@ -5,7 +5,7 @@ from odoo import models, fields , api
 class FitnessMember(models.Model):
     _name = 'fitness.member'
     _description = 'Fitness Club Member'
-    _order = "name asc"
+   # _order = "name asc"
 
 
     name = fields.Char(string="Member Name",required=True,placeholder="Enter Full Name")
@@ -73,6 +73,7 @@ class FitnessMember(models.Model):
         ('closed','Closed')
     ], default = 'draft')
 
+    sequence = fields.Integer('Sequence')
 
     def activate(self):
         self.write({'state':'confirmed','active':True})

@@ -30,6 +30,7 @@
                         <field name="address" help="Enter your current address"/>
                         <field name="is_active" invisible="True"/>
                         <field name="password" password="True" help="Enter the strong Password"/>
+                        <field name="sequence" widget="handle"/>
                     </group>
 
                     <seperator string="Fitness Sessions"/>
@@ -109,7 +110,8 @@
         <field name="name">fitness.member.list</field>
         <field name="model">fitness.member</field>
         <field name="arch" type="xml">
-            <list>
+            <list default_order="sequence" editable="top">
+                <field name="sequence" widget="handle"/>
                 <field name="membership_code"/>
                 <field name="name"/>
                 <field name="age"/>
