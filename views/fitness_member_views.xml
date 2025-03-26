@@ -53,6 +53,11 @@
                         <field name="priority" widget="priority" help="Enter the priority like 1 star, 2 star etc."/>
                     </group>
 
+                    <group>
+                        <field name="document" filename="document_name"/>
+                        <field name="document_name" invisible="1"/>
+                    </group>
+
                     <notebook>
 
                          <page string="Health Details">

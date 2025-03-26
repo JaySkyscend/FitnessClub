@@ -33,6 +33,8 @@ class FitnessMember(models.Model):
         ('platinum','Platinum')
     ], string="Membership Type", default='bronze' )
 
+    document = fields.Binary(string="Upload File")
+    document_name = fields.Char(string="File Name")
     state = fields.Selection([
         ('draft','Draft'),
         ('confirmed','Confirmed'),
