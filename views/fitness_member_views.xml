@@ -22,6 +22,8 @@
                         <field name="related_record"/>
                         <field name="age" required="1" help="Enter your current Age"/>
                         <field name="weight" help="Enter your weight"/>
+                        <field name="performance_score" sum="avg"/>
+                        <field name="workout_duration" sum="max"/>
                         <field name="amount"/>
                         <field name="currency_id" invisible="1"/>
                         <field name="trainer_id" help="Enter the Assigned Trainer Id" options="{'no_create':True,'no_open':True}"/>
@@ -49,6 +51,7 @@
 
                     <group>
                         <field name="membership_type" widget="radio" help="Choose Membership type from below"/>
+
                         <field name="join_date" help="Enter the Joining Data"/>
                         <field name="last_visit" help="Enter the last Visiting date and time"/>
                         <field name="priority" widget="priority" help="Enter the priority like 1 star, 2 star etc."/>
@@ -95,6 +98,7 @@
                 <field name="name"/>
                 <field name="age"/>
                 <field name="weight"/>
+                <field name="workout_duration" sum="max"/>
                 <field name="amount"/>
                 <field name="currency_id"/>
                 <field name="trainer_id"/>
@@ -114,6 +118,7 @@
             <field name="age"/>
             <field name="trainer_id"/>
             <field name="membership_type"/>
+            <field name="workout_duration"/>
             <field name="is_active"/>
         </search>
         </field>

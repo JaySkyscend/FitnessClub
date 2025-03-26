@@ -17,6 +17,7 @@ class FitnessMember(models.Model):
     )
     age = fields.Integer(string="Age", required=True)
     weight = fields.Float(string="Weight (kg)",digits=(6,3))
+    performance_score = fields.Float(string="Performance Score")
     amount = fields.Monetary(string="Membership Fee",currency_field="currency_id")
     currency_id = fields.Many2one('res.currency',string="Currency",default=lambda self: self.env.ref('base.CAD').id)
     trainer_id = fields.Many2one('fitness.trainer',string="Assigned Trainer",ondelete="restrict")
@@ -34,6 +35,7 @@ class FitnessMember(models.Model):
         ('platinum','Platinum')
     ], string="Membership Type", default='bronze' )
 
+    workout_duration = fields.Integer(string="Workout Duration (Minutes)")
  #   document = fields.Binary(string="Upload File")
 
     # to add file in database
