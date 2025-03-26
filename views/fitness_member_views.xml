@@ -52,6 +52,7 @@
                         <separatr string="Total Session Statistics"/>
                         <field name="total_session_value" readonly="1"/>
                         <field name="total_computed_value" readonly="1"/>
+                        <field name="final_score" readonly="1"/>
                     </group>
 
                     <seperator string="Used Equipment"/>
@@ -139,12 +140,23 @@
         </field>
     </record>
 
+    <record id="view_fitness_member_graph" model="ir.ui.view">
+        <field name="name">fitness.member.graph</field>
+        <field name="model">fitness.member</field>
+        <field name="arch" type="xml">
+            <graph type="pie">
+                <field name="name"/>
+                <field name="final_score" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
 
 
     <record id="action_fitness_member" model="ir.actions.act_window">
         <field name="name">Fitness Members</field>
         <field name="res_model">fitness.member</field>
-        <field name="view_mode">list,form,search</field>
+        <field name="view_mode">list,form,search,graph</field>
     </record>
 
 

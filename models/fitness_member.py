@@ -27,6 +27,8 @@ class FitnessMember(models.Model):
     total_session_value = fields.Float(string="Total Session Value",compute="_compute_totals",store=True)
     total_computed_value = fields.Float(string="Total Computed Value",compute="_compute_totals",store=True)
 
+    final_score = fields.Integer(string="Final Score",compute="_compute_final_score",store=True)
+
     equipment_ids = fields.Many2many('fitness.equipment','fitness_member_equipment_rel','member_id','equipment_id',string="Used Equipment")
     is_active = fields.Boolean(string="Active",default=True)
     address = fields.Text(string="Address")
@@ -79,3 +81,8 @@ class FitnessMember(models.Model):
         for record in self:
             record.total_session_value = sum(record.session_ids.mapped('total_value'))
             record.total_computed_value = sum(record.session_ids.mapped('computed_value'))
+
+    @api.depends('total_session_value','total_computed_value')
+    def _compute_final_score(self):
+        for record in self:
+            record.final_score = int(record.total_session_value - record.total_computed_value)
