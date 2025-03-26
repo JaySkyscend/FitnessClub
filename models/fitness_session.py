@@ -2,6 +2,8 @@
 
 
 from odoo import fields,models
+from odoo.api import ondelete
+
 
 class FitnessSession(models.Model):
     _name = 'fitness.session'
