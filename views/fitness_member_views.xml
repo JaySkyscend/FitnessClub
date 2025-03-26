@@ -48,6 +48,12 @@
                         </list>
                     </field>
 
+                    <group>
+                        <separatr string="Total Session Statistics"/>
+                        <field name="total_session_value" readonly="1"/>
+                        <field name="total_computed_value" readonly="1"/>
+                    </group>
+
                     <seperator string="Used Equipment"/>
                     <group>
                         <field name="equipment_ids" widget="many2many_checkboxes"/>
@@ -63,6 +69,8 @@
                         <field name="priority" widget="priority" help="Enter the priority like 1 star, 2 star etc."/>
                     </group>
 
+
+
                     <group>
                         <field name="document" filename="document_name"/>
                         <field name="document_name" invisible="1"/>
@@ -75,6 +83,7 @@
                                  <field name="health_details"/>
                              </group>
                          </page>
+
 
                         <page string="Contact Info">
                     <group>

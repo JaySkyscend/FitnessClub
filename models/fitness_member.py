@@ -1,6 +1,6 @@
 
 
-from odoo import models, fields
+from odoo import models, fields , api
 
 class FitnessMember(models.Model):
     _name = 'fitness.member'
@@ -22,6 +22,11 @@ class FitnessMember(models.Model):
     currency_id = fields.Many2one('res.currency',string="Currency",default=lambda self: self.env.ref('base.CAD').id)
     trainer_id = fields.Many2one('fitness.trainer',string="Assigned Trainer",ondelete="restrict")
     session_ids = fields.One2many('fitness.session','member_id',string="Sessions")
+
+    # Float fields to store the total values from all one2many records
+    total_session_value = fields.Float(string="Total Session Value",compute="_compute_totals",store=True)
+    total_computed_value = fields.Float(string="Total Computed Value",compute="_compute_totals",store=True)
+
     equipment_ids = fields.Many2many('fitness.equipment','fitness_member_equipment_rel','member_id','equipment_id',string="Used Equipment")
     is_active = fields.Boolean(string="Active",default=True)
     address = fields.Text(string="Address")
@@ -68,3 +73,9 @@ class FitnessMember(models.Model):
 
     def action_cancel(self):
         return {'type':'ir.actions.act_window_close'}
+
+    @api.depends('session_ids.total_value','session_ids.computed_value')
+    def _compute_totals(self):
+        for record in self:
+            record.total_session_value = sum(record.session_ids.mapped('total_value'))
+            record.total_computed_value = sum(record.session_ids.mapped('computed_value'))
