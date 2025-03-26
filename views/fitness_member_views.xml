@@ -29,7 +29,7 @@
                     <seperator string="Fitness Sessions"/>
 
                     <field name="session_ids">
-                        <list editable="bottom">
+                        <list editable="bottom" limit="10">
                             <field name="name"/>
                             <field name="date"/>
                             <field name="duration"/>
