@@ -12,6 +12,7 @@
                         <field name="expertise"/>
                         <field name="phone"/>
                         <field name="email"/>
+                        <field name="supervisor_id"/>
                     </group>
 
                     <separator string="Certifications"/>
@@ -29,6 +30,7 @@
         <field name="arch" type="xml">
             <list>
                 <field name="name"/>
+                <field name="supervisor_id"/>
                 <field name="expertise"/>
                 <field name="certification_ids"/>
             </list>

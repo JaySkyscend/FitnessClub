@@ -1,12 +1,21 @@
 
 from odoo import models, fields
 
+
+
 class FitnessTrainer(models.Model):
     _name = 'fitness.trainer'
     _description = 'Fitness Club Trainer'
+    _parent_name = "supervisor_id"
+    _parent_store = True
+    _order = "parent_path, name"
 
 
     name = fields.Char(string="Trainer Name",required=True)
+    supervisor_id = fields.Many2one('fitness.trainer',string='Supervisor',ondelete="set null",index=True)
+
+    parent_path = fields.Char(index=True)
+
     expertise = fields.Selection([
         ('yoga','Yoga'),
         ('weightlifting','WeightLifting'),

@@ -20,7 +20,7 @@ class FitnessMember(models.Model):
     performance_score = fields.Float(string="Performance Score")
     amount = fields.Monetary(string="Membership Fee",currency_field="currency_id")
     currency_id = fields.Many2one('res.currency',string="Currency",default=lambda self: self.env.ref('base.CAD').id)
-    trainer_id = fields.Many2one('fitness.trainer',string="Assigned Trainer",ondelete="restrict")
+    trainer_id = fields.Many2one('fitness.trainer',string="Assigned Trainer",ondelete="restrict",index=True)
     session_ids = fields.One2many('fitness.session','member_id',string="Sessions")
 
     # Float fields to store the total values from all one2many records
