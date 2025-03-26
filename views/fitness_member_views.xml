@@ -42,6 +42,8 @@
                             <field name="calories_burned"/>
                             <field name="heart_rate_avg"/>
                             <field name="distance_covered"/>
+                            <field name="total_value" readonly="1"/>
+                            <field name="computed_value" readonly="1"/>
                         </list>
                     </field>
 

@@ -1,7 +1,5 @@
 
-
-
-from odoo import fields,models
+from odoo import fields,models,api
 
 
 
@@ -29,3 +27,13 @@ class FitnessSession(models.Model):
     calories_burned = fields.Float(string="Calories Burned",help="Total Calories burn during session")
     heart_rate_avg = fields.Float(string="Average Heart Rate", help="Average heart rate during session")
     distance_covered = fields.Float(string="Distance covered (km)",help="Distance covered in kilometers.")
+
+    # Computed fields ( not store in database)
+    total_value = fields.Float(string="Total Value",compute="_compute_values",store=False)
+    computed_value = fields.Float(string="Computed Value",compute="_compute_values",store=False)
+
+    @api.depends('calories_burned','heart_rate_avg','distance_covered')
+    def _compute_values(self):
+        for record in self:
+            record.total_value = (record.calories_burned or 0) + (record.heart_rate_avg or 0) + (record.distance_covered or 0)
+            record.computed_value = (record.calories_burned or 0 ) + (record.distance_covered or 0 ) - (record.heart_rate_avg or 0)
