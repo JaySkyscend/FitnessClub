@@ -5,7 +5,7 @@ from odoo import models, fields , api
 class FitnessMember(models.Model):
     _name = 'fitness.member'
     _description = 'Fitness Club Member'
-   # _order = "name asc"
+    _order = "sequence, name asc"
 
 
     name = fields.Char(string="Member Name",required=True,placeholder="Enter Full Name")
@@ -48,11 +48,7 @@ class FitnessMember(models.Model):
     # to add file in database
     document = fields.Binary(string="Upload File",attachment=True)
     document_name = fields.Char(string="File Name")
-    state = fields.Selection([
-        ('draft','Draft'),
-        ('confirmed','Confirmed'),
-        ('done','Done')
-    ], string="Status",default='draft',tracking=True)
+
 
     email = fields.Char(string='Email')
     website = fields.Char(string="Website",widget="url")
@@ -74,6 +70,12 @@ class FitnessMember(models.Model):
     ], default = 'draft')
 
     sequence = fields.Integer('Sequence')
+
+    parent_id = fields.Many2one('fitness.member','Gym Leader')
+
+    child_ids = fields.One2many('fitness.member','parent_id','Gym Members')
+
+    parent_path = fields.Char('Parent Path',index=True)
 
     def activate(self):
         self.write({'state':'confirmed','active':True})

@@ -7,9 +7,9 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="activate" type="object" string="Activate" class="oe_highlight"/>
-                    <button name="deactivate" type="object" string="Deactivate" class="oe_secondary"/>
-                    <field name="state" widget="statusbar" statusbar_visible="draft,pending,active,suspend,closed" options="{'clickable':1}"/>
+<!--                    <button name="activate" type="object" string="Activate" class="oe_highlight"/>-->
+<!--                    <button name="deactivate" type="object" string="Deactivate" class="oe_secondary"/>-->
+                    <field name="state" widget="statusbar" statusbar_visible="draft,pending,active,suspended,closed" options="{'clickable':1}"/>
                 </header>
 
 
@@ -30,10 +30,10 @@
                         <field name="address" help="Enter your current address"/>
                         <field name="is_active" invisible="True"/>
                         <field name="password" password="True" help="Enter the strong Password"/>
-                        <field name="sequence" widget="handle"/>
+
                     </group>
 
-                    <seperator string="Fitness Sessions"/>
+                    <separator string="Fitness Sessions"/>
 
                     <field name="session_ids">
                         <list editable="bottom" limit="10">
@@ -50,18 +50,18 @@
                     </field>
 
                     <group>
-                        <separatr string="Total Session Statistics"/>
+                        <separator string="Total Session Statistics"/>
                         <field name="total_session_value" readonly="1"/>
                         <field name="total_computed_value" readonly="1"/>
                         <field name="final_score" readonly="1"/>
                     </group>
 
-                    <seperator string="Used Equipment"/>
+                    <separator string="Used Equipment"/>
                     <group>
                         <field name="equipment_ids" widget="many2many_checkboxes"/>
                     </group>
 
-                    <seperator string="Membership Details" />
+                    <separator string="Membership Details" />
 
                     <group>
                         <field name="membership_type" widget="radio" help="Choose Membership type from below"/>
@@ -80,6 +80,14 @@
 
                     <notebook>
 
+                        <page string="Hierarchy" name="gym_hierarchy">
+                            <group>
+                                <field name="parent_id"/>
+                            </group>
+                            <separator string="Team Members"/>
+                            <field name="child_ids" readonly="1"/>
+                        </page>
+
                          <page string="Health Details">
                              <group>
                                  <field name="health_details"/>
@@ -89,12 +97,13 @@
 
                         <page string="Contact Info">
                     <group>
-                        <field name="email" nolable="1" help="Enter the email Address"/>
+                        <field name="email" nolabel="1" help="Enter the email Address"/>
                         <field name="website" help="Enter the website "/>
                     </group>
                         </page>
 
                     </notebook>
+
                 </sheet>
 
                 <footer>
@@ -110,7 +119,7 @@
         <field name="name">fitness.member.list</field>
         <field name="model">fitness.member</field>
         <field name="arch" type="xml">
-            <list default_order="sequence" editable="top">
+            <list default_order="sequence">
                 <field name="sequence" widget="handle"/>
                 <field name="membership_code"/>
                 <field name="name"/>
