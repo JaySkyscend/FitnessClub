@@ -39,6 +39,9 @@
                             <field name="name"/>
                             <field name="date"/>
                             <field name="duration"/>
+                            <field name="calories_burned"/>
+                            <field name="heart_rate_avg"/>
+                            <field name="distance_covered"/>
                         </list>
                     </field>
 

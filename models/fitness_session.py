@@ -24,3 +24,8 @@ class FitnessSession(models.Model):
         ],
         string="Related Record"
     )
+
+    # three manually entered float fields
+    calories_burned = fields.Float(string="Calories Burned",help="Total Calories burn during session")
+    heart_rate_avg = fields.Float(string="Average Heart Rate", help="Average heart rate during session")
+    distance_covered = fields.Float(string="Distance covered (km)",help="Distance covered in kilometers.")
