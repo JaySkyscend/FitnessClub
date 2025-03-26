@@ -34,7 +34,10 @@ class FitnessMember(models.Model):
         ('platinum','Platinum')
     ], string="Membership Type", default='bronze' )
 
-    document = fields.Binary(string="Upload File")
+ #   document = fields.Binary(string="Upload File")
+
+    # to add file in database
+    document = fields.Binary(string="Upload File",attachment=True)
     document_name = fields.Char(string="File Name")
     state = fields.Selection([
         ('draft','Draft'),
