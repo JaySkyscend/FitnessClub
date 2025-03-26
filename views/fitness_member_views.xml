@@ -9,7 +9,7 @@
                 <header>
                     <button name="activate" type="object" string="Activate" class="oe_highlight"/>
                     <button name="deactivate" type="object" string="Deactivate" class="oe_secondary"/>
-                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,pending,active,suspend,closed" options="{'clickable':1}"/>
                 </header>
 
 

@@ -63,6 +63,17 @@ class FitnessMember(models.Model):
     membership_code = fields.Char(string="Membership Code",size=4)
     password = fields.Char(string="Password",password=True)
 
+
+
+    state = fields.Selection([
+        ('draft','Draft'),
+        ('pending','Pending Approval'),
+        ('active','Active'),
+        ('suspend','Suspend'),
+        ('closed','Closed')
+    ], default = 'draft')
+
+
     def activate(self):
         self.write({'state':'confirmed','active':True})
 
