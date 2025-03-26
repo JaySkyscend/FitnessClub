@@ -11,6 +11,8 @@ class FitnessMember(models.Model):
     name = fields.Char(string="Member Name",required=True,placeholder="Enter Full Name")
     age = fields.Integer(string="Age", required=True)
     weight = fields.Float(string="Weight (kg)",digits=(6,3))
+    amount = fields.Monetary(string="Membership Fee",currency_field="currency_id")
+    currency_id = fields.Many2one('res.currency',string="Currency",default=lambda self: self.env.ref('base.CAD').id)
     trainer_id = fields.Many2one('fitness.trainer',string="Assigned Trainer",ondelete="restrict")
     session_ids = fields.One2many('fitness.session','member_id',string="Sessions")
     equipment_ids = fields.Many2many('fitness.equipment','fitness_member_equipment_rel','member_id','equipment_id',string="Used Equipment")

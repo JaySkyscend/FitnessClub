@@ -20,7 +20,9 @@
                         <field name="name" placeholder="Enter Full Name" help="Enter The Full Name as Jay Patel"/>
                         <field name="age" required="1" help="Enter your current Age"/>
                         <field name="weight" help="Enter your weight"/>
-                        <field name="trainer_id" help="Enter the Assigned Trainer Id" options="{'no_create':True}"/>
+                        <field name="amount"/>
+                        <field name="currency_id" invisible="1"/>
+                        <field name="trainer_id" help="Enter the Assigned Trainer Id" options="{'no_create':True,'no_open':True}"/>
                         <field name="address" help="Enter your current address"/>
                         <field name="is_active" invisible="True"/>
                         <field name="password" password="True" help="Enter the strong Password"/>
@@ -86,6 +88,8 @@
                 <field name="name"/>
                 <field name="age"/>
                 <field name="weight"/>
+                <field name="amount"/>
+                <field name="currency_id"/>
                 <field name="trainer_id"/>
                 <field name="membership_type"/>
                 <field name="is_active"/>
