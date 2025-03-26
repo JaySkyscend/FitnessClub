@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_fitness_certification_form" model="ir.ui.view">
+        <field name="name">fitness.certification.form</field>
+        <field name="model">fitness.certification</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="authority"/>
+                        <field name="validity"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_fitness_certification_list" model="ir.ui.view">
+        <field name="name">fitness.certification.list</field>
+        <field name="model">fitness.certification</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="authority"/>
+                <field name="validity"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_fitness_certification" model="ir.actions.act_window">
+        <field name="name">Trainer Certification</field>
+        <field name="res_model">fitness.certification</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+
+    <menuitem id="menu_fitness_certification" parent="menu_fitness_club_root" action="action_fitness_certification" name="Certifications" sequence="5"/>
+
+</odoo>
+
+

@@ -13,6 +13,11 @@
                         <field name="phone"/>
                         <field name="email"/>
                     </group>
+
+                    <separator string="Certifications"/>
+
+                    <field name="certification_ids" widget="many2many_tags"/>
+
                 </sheet>
             </form>
         </field>
@@ -25,6 +30,7 @@
             <list>
                 <field name="name"/>
                 <field name="expertise"/>
+                <field name="certification_ids"/>
             </list>
         </field>
     </record>
@@ -37,5 +43,4 @@
 
 
     <menuitem id="menu_fitness_trainer" parent="menu_fitness_club_root" action="action_fitness_trainer" name="Trainers" sequence="3"/>
-
 </odoo>

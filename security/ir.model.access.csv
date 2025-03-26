@@ -8,3 +8,7 @@ access_fitness_session_user,Fitness Session User,model_fitness_session,group_fit
 access_fitness_equipment_admin,Fitness Equipment Admin,model_fitness_equipment,group_fitness_admin,1,1,1,1
 access_fitness_equipment_trainer,Fitness Equipment Trainer,model_fitness_equipment,group_fitness_trainer,1,1,0,0
 access_fitness_equipment_user,Fitness Equipment User,model_fitness_equipment,group_fitness_user,1,0,0,0
+access_fitness_certificate_admin,Fitness Certificate Admin,model_fitness_certification,group_fitness_admin,1,1,1,1
+access_fitness_certificate_trainer,Fitness Certificate Trainer,model_fitness_certification,group_fitness_trainer,1,1,1,1
+access_fitness_certificate_user,Fitness Certificate User,model_fitness_certification,group_fitness_user,1,1,0,0
+
