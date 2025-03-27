@@ -1,14 +1,16 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_fitness_admin,Fitness Club Admin,model_fitness_member,group_fitness_admin,1,1,1,1
 access_fitness_user,Fitness Club User,model_fitness_member,group_fitness_user,1,0,0,0
-access_fitness_trainer,Fitness Club Trainer,model_fitness_trainer,group_fitness_trainer,1,1,1,0
+access_fitness_trainer,Fitness Club Trainer,model_fitness_member,group_fitness_trainer,1,1,0,0
+access_fitness_trainer_admin,Fitness Trainer Admin,model_fitness_trainer,group_fitness_admin,1,1,1,1
+access_fitness_trainer_trainer,Fitness Trainer Trainer,model_fitness_trainer,group_fitness_trainer,1,1,1,1
+access_fitness_trainer_user,Fitness Trainer User,model_fitness_trainer,group_fitness_user,1,0,0,0
 access_fitness_session_admin,Fitness Session Admin,model_fitness_session,group_fitness_admin,1,1,1,1
 access_fitness_session_trainer,Fitness Session Trainer,model_fitness_session,group_fitness_trainer,1,1,1,1
 access_fitness_session_user,Fitness Session User,model_fitness_session,group_fitness_user,1,0,0,0
 access_fitness_equipment_admin,Fitness Equipment Admin,model_fitness_equipment,group_fitness_admin,1,1,1,1
-access_fitness_equipment_trainer,Fitness Equipment Trainer,model_fitness_equipment,group_fitness_trainer,1,1,0,0
+access_fitness_equipment_trainer,Fitness Equipment Trainer,model_fitness_equipment,group_fitness_trainer,1,1,1,0
 access_fitness_equipment_user,Fitness Equipment User,model_fitness_equipment,group_fitness_user,1,0,0,0
 access_fitness_certificate_admin,Fitness Certificate Admin,model_fitness_certification,group_fitness_admin,1,1,1,1
 access_fitness_certificate_trainer,Fitness Certificate Trainer,model_fitness_certification,group_fitness_trainer,1,1,1,1
 access_fitness_certificate_user,Fitness Certificate User,model_fitness_certification,group_fitness_user,1,1,0,0
-

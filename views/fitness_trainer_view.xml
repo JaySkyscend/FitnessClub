@@ -37,6 +37,7 @@
         </field>
     </record>
 
+
     <record id="action_fitness_trainer" model="ir.actions.act_window">
         <field name="name">Trainers</field>
         <field name="res_model">fitness.trainer</field>
