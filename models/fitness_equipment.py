@@ -13,5 +13,5 @@ class FitnessEquipment(models.Model):
     ], string="Equipment Type",required = True)
     purchase_date = fields.Date(string="Purchase Date")
     maintenance_date =fields.Date(string="Last Maintenance Date")
-    
+
      
