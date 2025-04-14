@@ -483,10 +483,32 @@ class FitnessMember(models.Model):
           # equipment_update = equipment.write()
            print("Record Created",equipment_obj)
 
-        
 
 
 
+    def action_update_session(self):
+        self.ensure_one()
+
+        updates = [
+            (1, 4, {
+                'name':'Updated HIIT Session',
+                'duration':2.0,
+            }),
+            (0,0, {
+                 'name':'Zumba Session',
+                 'duration':1.5,
+                 'notes':'Flexibility workout'
+            }),
+            Command.create({
+                'name':'Meditation Session',
+                'duration':0.5,
+                'notes':'Calm and focused breathing',
+            }),
+        ]
+
+        self.write({
+            'session_ids': updates
+        })
 
 
 

@@ -151,6 +151,7 @@
                                  <button name="action_add_existing_equipment" string="Add Equipment" type="object" class="btn-primary"/>
                                 <button name="action_remove_all_equipment" string="Remove Equipment" type="object" class="btn-primary"/>
                                 <button name="action_replace_all_equipment" string="Replace All Equipment" type="object" class="btn-primary"/>
+                                <button name="action_update_session" string="Update Session" type="object" class="btn-primary"/>
 
                             </group>
                         </page>
