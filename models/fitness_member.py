@@ -3,7 +3,7 @@ from email.policy import default
 from PIL.ImageChops import difference
 from systemd.login import sessions
 
-from odoo import models, fields , api
+from odoo import models, fields , api , Command
 
 
 
@@ -314,7 +314,7 @@ class FitnessMember(models.Model):
             all_members = self.env['fitness.member'].search([])
             some_members = all_members.filtered(lambda m : m.age < 30)
 
-            res = some_members < all_members
+            res = some_members > all_members
             print("Some member is subset of all member",res)
 
             res1 = all_members > some_members
@@ -402,37 +402,37 @@ class FitnessMember(models.Model):
 
     def action_create_member(self):
         self.env['fitness.member'].create({
-            'name':'Jagjit Singh',
-            'age': 35,
-            'weight' : 70.5,
+            'name':'Abhinav Sharma',
+            'age': 29,
+            'weight' : 75.8,
             'active' : True,
-            'performance_score': 8.5,
-            'amount' : 10000,
+            'performance_score': 10,
+            'amount' : 12000,
             'currency_id': self.env.ref('base.CAD').id,
-            'trainer_id':1,
-            'address':'123, Shyam villa, Gandhinagar',
+            'trainer_id':2,
+            'address':'Naranpura, Ahmedabad',
             'health_details':'<p>No serious medical history</p>',
             'join_date':fields.Date.today(),
             'last_visit':fields.Datetime.now(),
-            'membership_type':'platinum',
-            'workout_duration':90,
+            'membership_type':'gold',
+            'workout_duration':120,
             'session_ids': [
                 ( 0, 0, {
-                    'name': 'Strength Training',
-                    'duration':1.5,
-                    'calories_burned':500,
+                    'name': 'Strength Exercise',
+                    'duration':2.0,
+                    'calories_burned':750,
                     'heart_rate_avg':120,
-                    'distance_covered':2.5,
+                    'distance_covered':5.0,
                     'notes':'Focus on upper body',
                 }),
-                ( 0,0 ,{
+                ( Command.create({
                    'name':'Cardio Blast',
                     'duration':1.0,
                     'calories_burned':400,
                     'heart_rate_avg': 110,
                     'distance_covered':3.0,
                     'notes':'high-intensity interval session',
-                }),
+                }))
             ]
         })
 
