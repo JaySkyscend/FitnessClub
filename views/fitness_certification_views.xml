@@ -10,6 +10,7 @@
                         <field name="name"/>
                         <field name="authority"/>
                         <field name="validity"/>
+                        <field name="color_index" widget="color_picker"/>
                     </group>
                 </sheet>
             </form>
@@ -24,6 +25,7 @@
                 <field name="name"/>
                 <field name="authority"/>
                 <field name="validity"/>
+                <field name="color_index" widget="color_picker"/>
             </list>
         </field>
     </record>
@@ -36,6 +38,7 @@
 
 
     <menuitem id="menu_fitness_certification" parent="menu_fitness_club_root" action="action_fitness_certification" name="Certifications" sequence="5"/>
+
 
 </odoo>
 

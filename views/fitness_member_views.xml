@@ -6,32 +6,72 @@
         <field name="model">fitness.member</field>
         <field name="arch" type="xml">
             <form>
-                <header>
-<!--                    <button name="activate" type="object" string="Activate" class="oe_highlight"/>-->
-<!--                    <button name="deactivate" type="object" string="Deactivate" class="oe_secondary"/>-->
-                    <field name="state" widget="statusbar" statusbar_visible="draft,pending,active,suspend,closed" options="{'clickable':1}"/>
+                 <header>
+<!--                        <button name="action_set_pending" type="object" string="Set Pending" state="draft">Draft</button>-->
+<!--                        <button name="action_approve" type="object" string="Approve" state="pending"/>-->
+<!--                        <button name="action_suspend" type="object" string="Suspend" state="active"/>-->
+<!--                        <button name="action_close" type="object" string="Close" state="suspend"/>-->
+
+
+                   <button name="deactivate" type="object" string="Deactivate" class="oe_secondary"/>
+                   <button name="action_set_pending" type="object" string="Set Pending" state="draft" invisible='state == "activate"' class="oe_secondary"></button>
+                   <button name="activate" type="object" string="Activate" class="oe_highlight"/>
+                   <button name="action_suspend" type="object" string="Suspend" state="pending" />
+                   <button name="action_close" type="object" string="Close" state="suspend" />
+                    <button name="%(action_fitness_session)d" string="Session" type="action"/>
+
+                    <button name="print_environment_info" type="object" string="Print Env Info" class="oe_highlight"/>
+                    <button name="copy_read" type="object" string="Copy" class="oe_highlight"/>
+                     <button name="search_record" type="object" string="Search" class="oe_highlight"/>-->
+
+                     <div class="oe_button_box" name="button_box">
+                         <button name="action_view_session" type="object"
+                                 class="oe_stat_button" icon="fa-wrench">
+                             <field name="session_count" widget="statinfo" string="Sessions"/>
+                         </button>
+                     </div>
+
+<!--                     <div class="oe_button_box" name="button_box">-->
+<!--                    <button name="action_view_symptoms"-->
+<!--                            type="object"-->
+<!--                            class="oe_stat_button"-->
+<!--                            icon="fa-wrench">-->
+<!--                        <field name="symptom_count" widget="statinfo" string="Symptoms"/>-->
+<!--                    </button>-->
+<!--                </div>-->
+
                 </header>
-
-
                 <sheet>
-                    <group>
 
+                     <field name="state" widget="statusbar" statusbar_visible="draft,pending,active,suspend,closed" options="{'clickable':1}"/>
+                     <widget name="web_ribbon" title="Active" bg_color="text-bg-success" invisible="not active"/>
+                    <widget name="web_ribbon" title="Archive" bg_color="text-bg-danger" invisible="active"/>
+
+
+                  <group colspan="4">
+                    <group>
                         <field name="membership_code" help="Enter the membership code of 4 letters"/>
                         <field name="name" placeholder="Enter Full Name" help="Enter The Full Name as Jay Patel"/>
-                        <field name="image" widget="image" class="oe_avatar"/>
+                         <field name="image" widget="image" class="oe_avatar"/>
                         <field name="related_record"/>
-                        <field name="age" required="1" help="Enter your current Age"/>
+                        <field name="age" required="1" help="Enter your current Age" readonly="not name"/>
                         <field name="weight" help="Enter your weight"/>
+                        <field name="active" widget="boolean_toggle" string="Active"/>
+                    </group>
+                    <group>
                         <field name="performance_score" sum="avg"/>
                         <field name="workout_duration" sum="max"/>
                         <field name="amount"/>
-                        <field name="currency_id" invisible="1"/>
-                        <field name="trainer_id" help="Enter the Assigned Trainer Id" options="{'no_create':True,'no_open':True}"/>
+                        <field name="currency_id" invisible="amount > 0.0" required="amount > 0.0 "/>
+<!--                     <field name="trainer_id" help="Enter the Assigned Trainer Id" options="{'no_create':True,'no_open':True}" domain="[('expertise','in',['Cardio','Yoga'])]"/>-->
+                        <field name="trainer_id" help="Enter the Assigned Trainer Id"  domain="[('expertise','in',['Cardio','Yoga'])]"/>
                         <field name="address" help="Enter your current address"/>
-                        <field name="is_active" invisible="True"/>
-                        <field name="password" password="True" help="Enter the strong Password"/>
-
+                        <field name="password" password="True" help="Enter the strong Password" copy="False"/>
+                        <field name="is_leader" string="Leader"></field>
                     </group>
+                    </group>
+
+
 
                     <separator string="Fitness Sessions"/>
 
@@ -58,7 +98,7 @@
 
                     <separator string="Used Equipment"/>
                     <group>
-                        <field name="equipment_ids" widget="many2many_checkboxes"/>
+                        <field name="equipment_ids" widget="many2many_checkboxes" domain="[('equipment_type','=','strength')]"/>
                     </group>
 
                     <separator string="Membership Details" />
@@ -82,10 +122,10 @@
 
                         <page string="Hierarchy" name="gym_hierarchy">
                             <group>
-                                <field name="parent_id"/>
+                                <field name="parent_id" domain="[('id','!=',id)]" invisible="not is_leader"/>
                             </group>
                             <separator string="Team Members"/>
-                            <field name="child_ids" readonly="1"/>
+                            <field name="child_ids"/>
                         </page>
 
                          <page string="Health Details">
@@ -97,19 +137,29 @@
 
                         <page string="Contact Info">
                     <group>
-                        <field name="email" nolabel="1" help="Enter the email Address"/>
+                        <field name="email" nolabel="0" help="Enter the email Address"/>
                         <field name="website" help="Enter the website "/>
                     </group>
+                        </page>
+
+                        <page string="ORM Method">
+                            <group>
+                                <button name="action_create_member" string="Create Member" type="object" class="btn-primary"/>
+                                <button name="action_update_member" string="Update Member" type="object" class="btn-primary"/>
+                                <button name="action_delete_member_session" string="Delete Session" type="object" class="btn-primary"/>
+                                <button name="action_unlink_sessions" string="Unlink Session" type="object" class="btn-primary"/>
+                                 <button name="action_add_existing_equipment" string="Add Equipment" type="object" class="btn-primary"/>
+                                <button name="action_remove_all_equipment" string="Remove Equipment" type="object" class="btn-primary"/>
+                                <button name="action_replace_all_equipment" string="Replace All Equipment" type="object" class="btn-primary"/>
+
+                            </group>
                         </page>
 
                     </notebook>
 
                 </sheet>
 
-                <footer>
-                    <button string="Save" type="object" name="action_save"/>
-                    <button string="Cancel" type="object" name="action_cancel" />
-                </footer>
+
             </form>
         </field>
     </record>
@@ -120,6 +170,7 @@
         <field name="model">fitness.member</field>
         <field name="arch" type="xml">
             <list default_order="sequence">
+
                 <field name="sequence" widget="handle"/>
                 <field name="membership_code"/>
                 <field name="name"/>
@@ -130,7 +181,7 @@
                 <field name="currency_id"/>
                 <field name="trainer_id"/>
                 <field name="membership_type"/>
-                <field name="is_active"/>
+                <field name="active"/>
             </list>
         </field>
     </record>
@@ -145,8 +196,21 @@
             <field name="age"/>
             <field name="trainer_id"/>
             <field name="membership_type"/>
-            <field name="workout_duration"/>
-            <field name="is_active"/>
+            <field name="workout_duration" />
+            <filter name="Active" domain="[]" context = "{'group_by':'active'}"/>
+            <filter name="has_trainer" string="Has Trainer" domain="[('trainer_id','!=',False)]"/>
+            <filter name="platinum_membership" string="Platinum Members" domain="[('membership_type','=','platinum')]"/>
+
+            <filter string="Joined in Last 3 Months" name="last_3_months" domain="[('join_date','>=',(context_today() - relativedelta(months=3)).strftime('%Y-%m-%d'))]"/>
+            <filter string="Joined in Last 3 Years" name="last_3_years" domain="[('join_date','>=',(context_today() - relativedelta(years=3)).strftime('%Y-%m-%d'))]"/>
+
+            <group expand="1" string="Group By">
+                <filter name="group_by_trainer" string="Trainer" context="{'group_by':'trainer_id'}"/>
+                <filter name="group_by_membership_type" string="Membership Type" context="{'group_by':'membership_type'}"/>
+
+                <filter name="grp_by_join_date" string="Join Date" domain="[]" context="{'group_by':'join_date'}"/>
+            </group>
+
         </search>
         </field>
     </record>
@@ -162,16 +226,48 @@
         </field>
     </record>
 
+    <record id="view_fitness_member_with_trainer_list" model="ir.ui.view">
+        <field name="name">fitness.member.with.trainer.list</field>
+        <field name="model">fitness.member</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="trainer_id"/>
+            </list>
+        </field>
+    </record>
+
+
+<!--    <record id="action_fitness_member_sessions" model="ir.actions.act_window">-->
+<!--        <field name="name">Member Sessions</field>-->
+<!--        <field name="res_model">fitness.session</field>-->
+<!--        <field name="view_mode">list</field>-->
+<!--        <field name="domain">[('member_id','=',active_id)]</field>-->
+<!--    </record>-->
 
 
     <record id="action_fitness_member" model="ir.actions.act_window">
         <field name="name">Fitness Members</field>
         <field name="res_model">fitness.member</field>
         <field name="view_mode">list,form,search,graph</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
     </record>
+
+    <record id="action_members_with_trainer" model="ir.actions.act_window">
+        <field name="name">Member with Trainer</field>
+        <field name="res_model">fitness.member</field>
+<!--        <field name="domain">[('trainer_id','!=',False)]</field>-->
+        <field name="view_mode">list</field>
+<!--        <field name="views" eval="[(ref('view_fitness_member_with_trainer_list'),'list')]"/>-->
+
+    </record>
+
+
 
 
     <menuitem id="menu_fitness_club_root" name="Fitness Club" sequence="1"/>
     <menuitem id="menu_fitness_members" parent="menu_fitness_club_root" action="action_fitness_member" name="Members" sequence="2"/>
+    <menuitem id="menu_fitness_members_with_trainer" parent="menu_fitness_club_root" action="action_members_with_trainer" name="Member with trainer" sequence="100"/>-->
 
 </odoo>

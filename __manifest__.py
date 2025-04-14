@@ -1,7 +1,7 @@
 {
     'name': 'Fitness Club ERP',
     'version':'1.0',
-    'summary':'Manage Gym members, trainers , workouts, and payments efficiently',
+    'summary':'Manage Gym members, trainers , workouts efficiently',
     'author':'Jay Patel',
     'depends':['base'],
     'data':[

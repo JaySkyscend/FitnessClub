@@ -6,6 +6,11 @@
         <field name="model">fitness.trainer</field>
         <field name="arch" type="xml">
             <form>
+
+                <header>
+                    <button name="action_print_name" type="object" string="Print Name" class="btn-primary"/>
+                </header>
+
                 <sheet>
                     <group>
                         <field name="name"/>
@@ -18,6 +23,7 @@
                     <separator string="Certifications"/>
 
                     <field name="certification_ids" widget="many2many_tags"/>
+
 
                 </sheet>
             </form>

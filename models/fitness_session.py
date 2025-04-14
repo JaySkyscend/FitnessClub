@@ -1,14 +1,15 @@
 
-from odoo import fields,models,api
 
+from odoo import fields,models,api
 
 
 class FitnessSession(models.Model):
     _name = 'fitness.session'
     _description = 'Fitness Session'
 
+
     name = fields.Char(string="Session Name",required=True)
-    date = fields.Date(string="Session Date",default=fields.Date.context_today,required=True)
+    date = fields.Date(string="Session Date",default=fields.Date.today(),required=True)
     duration = fields.Float(string="Duration (Hours)", help="Duration in hours, eg.,1.5 for 1 hour 30 minutes")
     member_id = fields.Many2one('fitness.member',string="Member",ondelete="cascade")
     trainer_id = fields.Many2one('fitness.trainer',string="Trainer")
@@ -31,7 +32,6 @@ class FitnessSession(models.Model):
     # Computed fields ( not store in database)
     total_value = fields.Float(string="Total Value",compute="_compute_values",store=False)
     computed_value = fields.Float(string="Computed Value",compute="_compute_values",store=False)
-
     progress_percentage = fields.Integer(string="Completion %",compute="_compute_percentage",store=False)
     @api.depends('calories_burned','heart_rate_avg','distance_covered')
     def _compute_values(self):
@@ -46,3 +46,6 @@ class FitnessSession(models.Model):
                 record.progress_percentage = int((record.computed_value / record.total_value) * 100)
             else:
                 record.progress_percentage = 0
+
+
+

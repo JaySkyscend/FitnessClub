@@ -32,3 +32,7 @@ class FitnessTrainer(models.Model):
         'certification_ref_id', # Custom column for fitness.certification
                  string="Certifications"
     )
+
+
+    def action_print_name(self):
+        print("Member Name:",self.name)

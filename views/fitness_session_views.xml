@@ -9,7 +9,7 @@
                     <group>
                         <field name="name"/>
                         <field name="date"/>
-                        <field name="duration"/>
+                        <field name="duration" invisble="date" required="date"/>
                         <field name="member_id"/>
                         <field name="trainer_id"/>
                         <field name="notes"/>
