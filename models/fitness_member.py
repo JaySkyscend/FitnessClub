@@ -436,6 +436,22 @@ class FitnessMember(models.Model):
             ]
         })
 
+        # def action_create_equipment(self):
+        """Create new fitness.equipment records from member model"""
+        equipment_obj = self.env['fitness.equipment']
+        equipment_vals_lst = [
+            {
+                'name': 'Shoulder Machine',
+                'equipment_type': 'strength',
+            },
+            {
+                'name': 'Leg machine',
+                'equipment_type': 'strength'
+            },
+        ]
+        new_equipment = equipment_obj.create(equipment_vals_lst)
+        print("New Equipment",new_equipment)
+
 
     def action_update_member(self):
         if not self:
