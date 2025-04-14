@@ -402,19 +402,19 @@ class FitnessMember(models.Model):
 
     def action_create_member(self):
         self.env['fitness.member'].create({
-            'name':'Abhinav Sharma',
-            'age': 29,
+            'name':'Virendra Gandhi',
+            'age': 35,
             'weight' : 75.8,
             'active' : True,
             'performance_score': 10,
-            'amount' : 12000,
+            'amount' : 15000,
             'currency_id': self.env.ref('base.CAD').id,
-            'trainer_id':2,
-            'address':'Naranpura, Ahmedabad',
-            'health_details':'<p>No serious medical history</p>',
+            'trainer_id':3,
+            'address':'Shahibaug, Ahmedabad',
+            'health_details':'<p>Sugar Problem</p>',
             'join_date':fields.Date.today(),
             'last_visit':fields.Datetime.now(),
-            'membership_type':'gold',
+            'membership_type':'silver',
             'workout_duration':120,
             'session_ids': [
                 ( 0, 0, {
@@ -433,10 +433,16 @@ class FitnessMember(models.Model):
                     'distance_covered':3.0,
                     'notes':'high-intensity interval session',
                 }))
+            ],
+            'equipment_ids':[
+                (4,6),
+                (4,7),
+                Command.link(3),
             ]
         })
 
-        # def action_create_equipment(self):
+
+
         """Create new fitness.equipment records from member model"""
         equipment_obj = self.env['fitness.equipment']
         equipment_vals_lst = [
