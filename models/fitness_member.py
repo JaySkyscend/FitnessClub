@@ -337,70 +337,6 @@ class FitnessMember(models.Model):
             difference_recordset = gold_members - intersection_recordset
             print("Difference recordset",difference_recordset)
 
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
             # print("User:",self.env.user)
@@ -466,10 +402,20 @@ class FitnessMember(models.Model):
 
     def action_create_member(self):
         self.env['fitness.member'].create({
-            'name':'Virat',
+            'name':'Jagjit Singh',
             'age': 35,
+            'weight' : 70.5,
+            'active' : True,
+            'performance_score': 8.5,
+            'amount' : 10000,
+            'currency_id': self.env.ref('base.CAD').id,
+            'trainer_id':1,
+            'address':'123, Shyam villa, Gandhinagar',
+            'health_details':'<p>No serious medical history</p>',
+            'join_date':fields.Date.today(),
+            'last_visit':fields.Datetime.now(),
             'membership_type':'platinum',
-            'amount':13000.0,
+            'workout_duration':90,
             'session_ids': [
                 ( 0, 0, {
                     'name': 'Strength Training',
