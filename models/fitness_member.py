@@ -258,8 +258,25 @@ class FitnessMember(models.Model):
             mtdt_multiple = members.get_metadata()
             print("Metadata for multiple",mtdt_multiple)
 
-            # adult_members = members.filtered(age < 30)
-            print("Filtered",member.filtered('age'))
+
+
+            def is_adult(member):
+                return member.age < 30
+            adult = members.filtered(is_adult)
+            print("Adult",adult)
+
+            # with lambda function
+            adult_members = members.filtered(lambda m: m.age < 30)
+            print("Adult members:",adult_members)
+
+            not_adult_member = members.filtered(lambda m:  not m.age < 30)
+            print("Not Adult Member:",not_adult_member)
+
+            gold_members = self.env['fitness.member'].search([]).filtered(lambda m:  m.membership_type == 'gold')
+            print("Gold Member",gold_members)
+
+            not_adult_member_and_gold_member = self.env['fitness.member'].search([]).filtered(lambda m: m.membership_type == 'gold' and  not m.age < 30)
+            print("Not adult and gold member",not_adult_member_and_gold_member)
 
 
 
@@ -277,22 +294,7 @@ class FitnessMember(models.Model):
 
 
 
-            # for record in self:
-            #     if record.ensure_one():
-            #         print("Single record:",record.name)
 
-            # for member in self:
-            #     print("Type of member:",type(member))
-
-
-
-            # for rec in self:
-            #     single_record = rec.name
-            #     print("Single Record",single_record)
-            #
-            #
-            # for rec in self:
-            #     print(rec.name,rec.email)
 
 
 
