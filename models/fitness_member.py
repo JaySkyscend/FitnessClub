@@ -470,6 +470,25 @@ class FitnessMember(models.Model):
 
         })
 
+       # equipmemt_obj = self.env['fitness.equipment'].search([
+       #     ('name','in',['Shoulder Machine','Leg Machine'])
+       # ])
+
+       equipment_obj = self.env['fitness.equipment'].search([('name','in',['Shoulder Machine','Leg Machine'])])
+
+       for equipment in equipment_obj:
+
+           equipment.new_rec = 'Cardio' if equipment.name == 'Shoulder Machine' else 'Strength'
+
+          # equipment_update = equipment.write()
+           print("Record Created",equipment_obj)
+
+        
+
+
+
+
+
 
 
     def action_delete_member_session(self):
