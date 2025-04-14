@@ -1,5 +1,6 @@
 from email.policy import default
 
+from PIL.ImageChops import difference
 from systemd.login import sessions
 
 from odoo import models, fields , api
@@ -294,7 +295,73 @@ class FitnessMember(models.Model):
             results = [m.weight + m.performance_score for m in members]
             print("Result", results)
 
+            sort_record_by_name = members.sorted('name')
+            print("Sorted record by name",sort_record_by_name)
+
+            sort_name_by_lambda = members.sorted(lambda rec : rec.name)
+            print("Sort name by lambda",sort_name_by_lambda)
+
+            sort_name_desc = members.sorted(lambda rec : rec.name, reverse=True)
+            print("Sort by desending",sort_name_desc)
+
+            # check whether a recordset containing a record is inside another recordset ot not.
+            jay_rec = self.filtered(lambda rec: rec.name == 'Akash Gupta')
+            print("Jay",jay_rec.name)
+
+            res1 = jay_rec in self
+            print("Checking not in self",res1)
+
+            all_members = self.env['fitness.member'].search([])
+            some_members = all_members.filtered(lambda m : m.age < 30)
+
+            res = some_members < all_members
+            print("Some member is subset of all member",res)
+
+            res1 = all_members > some_members
+            print("All member is superset of some member",res1)
+
+            senior_members = self.env['fitness.member'].search([('age', '>', 40)])
+            union = gold_members | senior_members
+            for m in union:
+                print("Union Member",m.name)
+
+            blank_recordset = member.browse([])
+
+            young_member = member.search([('age', '<', 30)])
+            union_recordset = blank_recordset  | young_member | gold_members
+            print("Union recordset",union_recordset)
+
+            intersection_recordset = gold_members & senior_members
+            print("Intersection recordset",intersection_recordset)
+
+            difference_recordset = gold_members - intersection_recordset
+            print("Difference recordset",difference_recordset)
+
             
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
