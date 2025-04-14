@@ -278,6 +278,29 @@ class FitnessMember(models.Model):
             not_adult_member_and_gold_member = self.env['fitness.member'].search([]).filtered(lambda m: m.membership_type == 'gold' and  not m.age < 30)
             print("Not adult and gold member",not_adult_member_and_gold_member)
 
+            member_names = members.mapped("name")
+            print("Multiple record in list",member_names)
+
+            # with lambda
+            member_names_with_lambda = list(map(lambda m: m.name, members))
+            print("Member names with lambda",member_names_with_lambda)
+
+            # Get the values of multiple fields from multiple record
+            # recordset for all the records in a list.
+            members_info = [(m.name , m.age) for m in members]
+            print("Members Info",members_info)
+
+
+            results = [m.weight + m.performance_score for m in members]
+            print("Result", results)
+
+            
+
+
+
+
+
+
 
 
 
