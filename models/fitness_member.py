@@ -463,30 +463,11 @@ class FitnessMember(models.Model):
 
 
     def action_update_member(self):
-        if not self:
-            print("No active member record.")
-            return
 
-        session = self.session_ids[:1]
-        updates = [
-            (1, session.id, {'name': 'Update Cardio Training', 'calories_burned': 550}) if session else (),
-            (0, 0, {
-                'name': 'Yoga Session',
-                'duration': 1.0,
-                'calories_burned': 250,
-                'heart_rate_avg': 90,
-                'distance_covered': 1.0,
-                'notes': 'Relaxing yoga practise'
-            }),
-        ]
-
-        # Filter out empty tuples in case session is empty
-        updates = [u for u in updates if u]
-
-        self.write({
-            'name': 'Jay Patel',
+       self.write({
+            'name': 'Grisha Pandit',
             'age': 30,
-            'session_ids': updates
+
         })
 
 
