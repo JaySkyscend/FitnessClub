@@ -434,11 +434,14 @@ class FitnessMember(models.Model):
                     'notes':'high-intensity interval session',
                 }))
             ],
-            'equipment_ids':[
-                (4,6),
-                (4,7),
-                Command.link(3),
-            ]
+            # 'equipment_ids':[
+            #     (4,6),
+            #     (4,7),
+            #     Command.link(3),
+            # ]
+
+             'equipment_ids':[(6,0,[1,2,3,4,5,6])]
+            #'equipment_ids': Command.set([3, 6, 7]),
         })
 
 
