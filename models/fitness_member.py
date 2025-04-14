@@ -494,6 +494,11 @@ class FitnessMember(models.Model):
                 'name':'Updated HIIT Session',
                 'duration':2.0,
             }),
+            Command.update(7,{
+                'name':'Updated Strength Session',
+                'duration':1.3,
+
+            }),
             (0,0, {
                  'name':'Zumba Session',
                  'duration':1.5,
@@ -509,6 +514,8 @@ class FitnessMember(models.Model):
         self.write({
             'session_ids': updates
         })
+
+
 
 
 
