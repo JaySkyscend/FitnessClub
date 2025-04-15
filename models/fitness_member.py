@@ -93,6 +93,9 @@ class FitnessMember(models.Model):
 
     parent_path = fields.Char('Parent Path',index=True)
 
+
+    user_id = fields.Many2one('res.users',string="Assigned User")
+
     def activate(self):
         existing_members = self.exists()
         if existing_members:
@@ -929,6 +932,45 @@ new values. """
         adult_members = self.env['fitness.member'].search([('age', '>', 35)])
         result = adult_members.read()
         print("Adult member", result)
+
+
+        #  Get a recordset of the user who created the record.
+        for rec in self:
+            creator = rec.create_uid
+            print("Created by",creator)
+
+    def action_assign_logged_in_user(self):
+        for rec in self:
+            rec.user_id = self.env.user
+            print("User Assigned to",rec.user_id)
+
+    def action_view_sessions(self):
+        self.ensure_one()
+        return {
+            'name': 'Sessions',
+            'type': 'ir.actions.act_window',
+            'res_model': 'fitness.session',
+            'view_mode': 'list,form',
+            'domain': [('member_id','=', self.id)],
+            'context': {'default_member_id': self.id},
+            'target':'current',
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
