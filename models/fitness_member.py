@@ -1,6 +1,6 @@
 from email.policy import default
 
-from PIL.ImageChops import difference
+from PIL.ImageChops import difference, offset
 from systemd.login import sessions
 
 from odoo import models, fields , api , Command
@@ -710,26 +710,6 @@ new values. """
             new_rec = rec.copy(default=default)
             print("New Rec",new_rec)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     def delete_record(self):
         self.unlink()
         res_8 = self.browse([8,32])
@@ -744,26 +724,40 @@ new values. """
         print("All records",all_records)
         age_records = self.search([('age', '>', 25)])
         print("Age Greate than 25",age_records)
-        age_less_records = self.search([('age', '<', 25)])
-        print("Age less than 25",age_less_records)
-        display_3_records = self.search([],limit=3)
-        print("Display 3",display_3_records)
-        sorted_by_name = self.search([],order='name')
+        cardio_trainer = self.env['fitness.trainer'].search([('expertise','=','Cardio')])
+        print("Another model",cardio_trainer.name)
+        skip_initial = self.search([], offset=3)
+        print("Skip initial",skip_initial)
+        five_members = self.search([],limit=5)
+        print("Five member",five_members)
+        sorted_by_name = self.search([], order='name')
         print("Sorted by name",sorted_by_name)
-        sorted_by_name_desc = self.search([], order='name desc')
-        print("Sorted by reverse name", sorted_by_name_desc)
-        all_cond_recs = self.search([],offset=2,limit=3,order='name')
-        print("All condition",all_cond_recs)
-        count = self.search_count([('age','>',25)])
-        print("Count Age > 25",{count})
-        search_count_1 = self.search_count([])
-        print(search_count_1)
-        search_read_records = self.search_read(domain=[('age','<', 25)],fields=['name','active','trainer_id'])
-        print("Search read records",search_read_records)
-        offset_recs = self.search_read(fields=['name','active','trainer_id'],offset=5)
-        print("Offset",offset_recs)
-        read_group_record = self.read_group(domain=[('age', '<', 25)],fields=['session_ids'],groupby=['trainer_id'],lazy=True)
-        print("Read Group Records",read_group_record)
+        sorted_by_date_desc = self.search([], order='join_date desc')
+        print("Sorted by reverse date", sorted_by_date_desc)
+        records = self.search([('age','>=',25)],
+                               offset=2,
+                                limit=5,
+                                 order='name desc')
+        print("Records by all parameter",records)
+
+        # age_less_records = self.search([('age', '<', 25)])
+        # print("Age less than 25",age_less_records)
+        # display_3_records = self.search([],limit=3)
+        # print("Display 3",display_3_records)
+        #
+        #
+        # all_cond_recs = self.search([],offset=2,limit=3,order='name')
+        # print("All condition",all_cond_recs)
+        # count = self.search_count([('age','>',25)])
+        # print("Count Age > 25",{count})
+        # search_count_1 = self.search_count([])
+        # print(search_count_1)
+        # search_read_records = self.search_read(domain=[('age','<', 25)],fields=['name','active','trainer_id'])
+        # print("Search read records",search_read_records)
+        # offset_recs = self.search_read(fields=['name','active','trainer_id'],offset=5)
+        # print("Offset",offset_recs)
+        # read_group_record = self.read_group(domain=[('age', '<', 25)],fields=['session_ids'],groupby=['trainer_id'],lazy=True)
+        # print("Read Group Records",read_group_record)
 
 
     @api.depends('session_ids')
