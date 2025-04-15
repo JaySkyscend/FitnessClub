@@ -925,6 +925,10 @@ new values. """
             print("Copy rec created:",copy_rec)
 
 
+    def get_adult_members_dict(self):
+        adult_members = self.env['fitness.member'].search([('age', '>', 35)])
+        result = adult_members.read()
+        print("Adult member", result)
 
 
 

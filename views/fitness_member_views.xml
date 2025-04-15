@@ -28,6 +28,8 @@
                      <button name="action_add_session" type="object" string="Add Session" class="oe_highlight"/>
                      <button name="action_delete_session" type="object" string="Delete Session" class="oe_highlight"/>
                      <button name="dupl_rec_create" type="object" string="Duplicate Copy" class="oe_highlight"/>
+                     <button name="get_adult_members_dict" type="object" string="Get Adult Member" class="oe_highlight"/>
+
 
                      <div class="oe_button_box" name="button_box">
                          <button name="action_view_session" type="object"
