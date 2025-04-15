@@ -30,6 +30,7 @@
                      <button name="dupl_rec_create" type="object" string="Duplicate Copy" class="oe_highlight"/>
                      <button name="get_adult_members_dict" type="object" string="Get Adult Member" class="oe_highlight"/>
                      <button name="action_assign_logged_in_user" type="object" string="Assign to Me" class="btn-primary"/>
+                     <button name="get_batched_members" type="object" string="Batch Data" class="btn-primary"/>
 
                      <button name="action_view_sessions" type="object" string="Sessions" class="oe_stat_button" icon="fa-list">
                          <field name="session_ids" widget="statinfo"/>

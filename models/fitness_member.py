@@ -957,6 +957,14 @@ new values. """
 
         }
 
+    def get_batched_members(self):
+        records = self.search([],order='id')
+        data = [(rec.id,rec.name) for rec in records]
+        chunked_data = [data[i:i + 5] for i in range(0, len(data), 5)]
+        print("Records in 5 Pair",chunked_data)
+
+
+
 
 
 
