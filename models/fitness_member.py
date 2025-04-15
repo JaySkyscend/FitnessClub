@@ -569,23 +569,53 @@ class FitnessMember(models.Model):
 
 
     def action_add_existing_equipment(self):
-        equipment = self.env['fitness.equipment'].search([('name','=','Treadmill')], limit=1)
 
-        if self and equipment:
-            self.write({
-                'equipment_ids': [(4,equipment.id,0)]
-            })
-            print("Equipment added to member.")
-        else:
-            print("Either equipment or member not found.")
+        """ Update the O2M field and link an existing record from
+the comodel.(Use both no and Command operation) """
+
+
+        self.ensure_one()
+
+        operations = [
+            (4,11),
+            Command.link(11),
+        ]
+
+        self.write({
+            'session_ids': operations
+        })
+
+
+        # equipment = self.env['fitness.equipment'].search([('name','=','Treadmill')], limit=1)
+        #
+        # if self and equipment:
+        #     self.write({
+        #         'equipment_ids': [(4,equipment.id,0)]
+        #     })
+        #     print("Equipment added to member.")
+        # else:
+        #     print("Either equipment or member not found.")
 
 
     def action_remove_all_equipment(self):
-        if self:
-            self.write({'equipment_ids':[(5,0,0)]})
-            print(f"All equipment removed for {self.name}")
-        else:
-            print("Member not found.")
+
+        """ Remove all the records from the O2M field.(Use both
+          no and Command operation)  """
+
+        self.ensure_one()
+
+        self.write({
+            'session_ids':  [
+                # (5,0,0),
+                Command.clear()
+            ]
+        })
+
+        # if self:
+        #     self.write({'equipment_ids':[(5,0,0)]})
+        #     print(f"All equipment removed for {self.name}")
+        # else:
+        #     print("Member not found.")
 
 
     def action_replace_all_equipment(self):
