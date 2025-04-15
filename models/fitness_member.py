@@ -740,6 +740,17 @@ new values. """
                                  order='name desc')
         print("Records by all parameter",records)
 
+        # Search_count()
+        search_count_1 = self.search_count([])
+        print("Total records:",search_count_1)
+        count_age = self.search_count([('age', '>', 25)])
+        print("Count Age > 25",{count_age})
+        equipment_count = self.env['fitness.equipment'].search_count([])
+        print("Total equipment records:",equipment_count)
+
+        # 
+
+
         # age_less_records = self.search([('age', '<', 25)])
         # print("Age less than 25",age_less_records)
         # display_3_records = self.search([],limit=3)
@@ -748,10 +759,8 @@ new values. """
         #
         # all_cond_recs = self.search([],offset=2,limit=3,order='name')
         # print("All condition",all_cond_recs)
-        # count = self.search_count([('age','>',25)])
-        # print("Count Age > 25",{count})
-        # search_count_1 = self.search_count([])
-        # print(search_count_1)
+        #
+        #
         # search_read_records = self.search_read(domain=[('age','<', 25)],fields=['name','active','trainer_id'])
         # print("Search read records",search_read_records)
         # offset_recs = self.search_read(fields=['name','active','trainer_id'],offset=5)
