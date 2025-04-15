@@ -748,7 +748,25 @@ new values. """
         equipment_count = self.env['fitness.equipment'].search_count([])
         print("Total equipment records:",equipment_count)
 
-        # 
+        # search_read()
+        all_data = all_records.read()
+        print("All Members with all fields:",all_data)
+
+        fields_to_fetch = ['trainer_id','session_ids','equipment_ids']
+        related_record = self.env['fitness.member'].search([('age','>=',25)])
+        relational_data = related_record.read(fields_to_fetch)
+        print("Relational fields only:",relational_data)
+
+        equipment_records = self.env['fitness.equipment'].search([], order="name")
+        equipment_data = equipment_records.read()
+        print("Sorted Equipment",equipment_data)
+
+        
+
+
+
+
+
 
 
         # age_less_records = self.search([('age', '<', 25)])
