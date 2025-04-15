@@ -761,7 +761,54 @@ new values. """
         equipment_data = equipment_records.read()
         print("Sorted Equipment",equipment_data)
 
+
+
+        # read_group()
+        result_1 = self.env['fitness.session'].read_group(
+            domain=[],
+            fields=['duration','trainer_id'],
+            groupby=['trainer_id']
+        )
+        print("Group by trainer", result_1)
+
+        result_2 = self.env['fitness.session'].read_group(
+            domain=[],
+            fields=['duration','trainer_id'],
+            groupby=['trainer_id','date']
+        )
+        print("Group by trainer and date:",result_2)
+
+        result_3 = self.env['fitness.session'].read_group(
+            domain=[],
+            fields=['duration','trainer_id'],
+            groupby=['trainer_id','date'],
+            lazy= False
+        )
+        print("group with second level detail",result_3)
+
+        result_4 = self.env['fitness.session'].read_group(
+            domain=[],
+            fields=['duration','trainer_id'],
+            groupby=['trainer_id'] ,offset = 2 , limit = 10,
+
+        )
+
+        result_sorted = sorted(result_4, key=lambda x:x.get('trainer_id')[1])
+        print("Sorted groups by offset and limit:",result_sorted)
+
+
+        result_5 = self.env['fitness.session'].read_group(
+            domain=[],
+            fields=['duration','trainer_id'],
+            groupby=['trainer_id'] ,
+
+        )
+
+        limited_result = result_5[:3]
+        print("Limited groups", limited_result)
         
+
+
 
 
 
