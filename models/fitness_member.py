@@ -726,6 +726,52 @@ new values. """
         }
 
 
+    def browse_record(self):
+        member1 = self.env['fitness.member']
+        print("Browse Member",member1.browse(1))
+        many_member = self.env['fitness.member'].browse([4,5,6])
+        print("Many Member",many_member)
+
+        trainer_obj = self.env['fitness.trainer']
+        trainer_1 = trainer_obj.browse(1).name
+        print("Trainer1",trainer_1)
+        trainer_many = trainer_obj.browse([2,3,4])
+        print("trainer many",trainer_many)
+
+
+        all_fields = member1.browse(11).read()[0]
+        print("All fields",all_fields)
+
+        specific_field = member1.browse(11).read(['name'])
+        print("Specific field",specific_field)
+
+        date_field = member1.browse(11).read(['join_date','last_visit','trainer_id','equipment_ids','session_ids','related_record'])
+        print("Date & many field",date_field)
+
+        read_another = trainer_obj.browse(1).read(['name'])
+        print("Another model",read_another)
+
+        records = self.env['fitness.member'].browse([11, 33, 29])  # Example record IDs
+        data = records.read(['trainer_id'])
+
+        for record in data:
+            print("Trainer ID:", record['trainer_id'])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
