@@ -1,7 +1,4 @@
-from email.policy import default
 
-from PIL.ImageChops import difference, offset
-from systemd.login import sessions
 
 from odoo import models, fields , api , Command
 
@@ -95,6 +92,9 @@ class FitnessMember(models.Model):
 
 
     user_id = fields.Many2one('res.users',string="Assigned User")
+
+
+
 
     def activate(self):
         existing_members = self.exists()
@@ -956,6 +956,8 @@ new values. """
             'target':'current',
 
         }
+
+
 
 
 

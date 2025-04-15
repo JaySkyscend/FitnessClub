@@ -13,9 +13,9 @@
 <!--                        <button name="action_close" type="object" string="Close" state="suspend"/>-->
 
 
-                   <button name="deactivate" type="object" string="Deactivate" class="oe_secondary"/>
+                   <button name="deactivate" type="object" string="Deactivate" class="oe_secondary" invisible="state !='active'"/>
                    <button name="action_set_pending" type="object" string="Set Pending" state="draft" invisible='state == "activate"' class="oe_secondary"></button>
-                   <button name="activate" type="object" string="Activate" class="oe_highlight"/>
+                   <button name="activate" type="object" string="Activate" class="oe_highlight" invisible="state!='draft'"/>
                    <button name="action_suspend" type="object" string="Suspend" state="pending" />
                    <button name="action_close" type="object" string="Close" state="suspend" />
                     <button name="%(action_fitness_session)d" string="Session" type="action"/>
@@ -34,6 +34,7 @@
                      <button name="action_view_sessions" type="object" string="Sessions" class="oe_stat_button" icon="fa-list">
                          <field name="session_ids" widget="statinfo"/>
                      </button>
+
 
                      <div class="oe_button_box" name="button_box">
                          <button name="action_view_session" type="object"
