@@ -665,16 +665,69 @@ new values. """
                     sessions.total_session_value = 100
 
 
-    def copy_read(self):
-       # new_rec = self.copy()
-      #  print("New Rec",new_rec)
+ #  def copy_read(self):
 
+     #  """ Duplicate a Record of the Current Model """
+        #  new_rec = self.copy()
+       # print("New Rec",new_rec)
+
+
+       # """ Duplicate Multiple Records of the Current Model """
+       # duplicates = self.copy_data()
+       # for vals in duplicates:
+       # self.env['fitness.member'].create(vals)
+
+   #    """  Duplicate a Record and Copy its O2M Field Too """
+       # duplicate = self.copy({
+       #     'session_ids': [( 0 ,0, {
+       #         'name': session.name,
+       #         'duration': session.duration,
+       #         'notes': session.notes,
+       #     }) for session in self.session_ids]
+       # })
+
+     #  """ Duplicate a Record But Prevent Certain Fields from Being Copied """
+
+    # def copy_read(self, default=None):
+    #     default = dict(default or {})
+    #     default['age'] = 0
+    #     default['trainer_id'] = False
+    #     return super().copy(default)
+
+
+    def copy_read(self):
         for rec in self:
-            update = {
-                'name':rec.name + ('copy')
+            # default = {
+            #      'name': rec.name + ('Copy')
+            #    }
+            # new_rec = rec.copy(default=default)
+
+            default = {
+                'name': 'New Duplicate Name',
+                'age': self.age + 1,
+                
             }
-            new_rec = rec.copy()
-            print("New Record",new_rec)
+            new_rec = rec.copy(default=default)
+            print("New Rec",new_rec)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     def delete_record(self):
