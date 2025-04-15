@@ -902,6 +902,27 @@ new values. """
 # click on this button it will remove all the records in one2many.
 
 
+    def action_delete_session(self):
+        for record in self:
+            record.session_ids.unlink()
+
+    def dupl_rec_create(self):
+        """ This button method  creates a duplicate of the current record without using copy"""
+
+
+        for rec in self:
+            copy_rec = {
+                'name': rec.name + ' (copy)',
+                'age': rec.age,  # Required field
+                'membership_type': rec.membership_type,
+                'join_date': rec.join_date,
+                'state': rec.state,
+                'currency_id': rec.currency_id.id,
+            }
+
+            self.create(copy_rec)
+
+            print("Copy rec created:",copy_rec)
 
 
 

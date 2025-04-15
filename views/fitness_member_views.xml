@@ -26,7 +26,8 @@
                      <button name="browse_record" type="object" string="Browse,Read" class="oe_highlight"/>
                      <button name="delete_record" type="object" string="Delete" class="oe_highlight"/>
                      <button name="action_add_session" type="object" string="Add Session" class="oe_highlight"/>
-
+                     <button name="action_delete_session" type="object" string="Delete Session" class="oe_highlight"/>
+                     <button name="dupl_rec_create" type="object" string="Duplicate Copy" class="oe_highlight"/>
 
                      <div class="oe_button_box" name="button_box">
                          <button name="action_view_session" type="object"
