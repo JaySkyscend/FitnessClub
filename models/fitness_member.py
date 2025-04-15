@@ -521,6 +521,11 @@ class FitnessMember(models.Model):
 
 
     def action_delete_member_session(self):
+
+        #  Update the O2M field and delete an existing record
+        # making sure it is deleted from the comodel’s table as
+        # well.(Use both no and Command operation)
+
         if self and self.session_ids:
             session_to_delete = self.session_ids[:1]
             self.write({
@@ -532,15 +537,36 @@ class FitnessMember(models.Model):
 
 
 
+
+
     def action_unlink_sessions(self):
-        if self and self.session_ids:
+
+        """  Update the O2M field and delete an existing record
+  making sure it is not deleted from the comodel’s table
+  as well.(Use both no and Command operation)  """
+
+
+
+        if self :
+
+
+            new_session_data = {
+                'name':'New Session',
+                'duration': 45
+            }
+
             unlink_commands = [(3, session.id, 0) for session in self.session_ids]
+
+            update_command = unlink_commands + [(0 ,0 , new_session_data)]
+
             self.write({
-                'session_ids': unlink_commands
+                'session_ids': update_command
             })
-            print(f"Unlinked {len(self.session_ids)} sessions from {self.name} (sessions still exist in DB)")
+            print(f"Unlinked {len(unlink_commands)} sessions and added a new one for {self.name} (sessions still exist in DB)")
         else:
             print("No sessions found or member doesn't exist.")
+
+
 
     def action_add_existing_equipment(self):
         equipment = self.env['fitness.equipment'].search([('name','=','Treadmill')], limit=1)
