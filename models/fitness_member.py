@@ -705,7 +705,7 @@ new values. """
             default = {
                 'name': 'New Duplicate Name',
                 'age': self.age + 1,
-                
+
             }
             new_rec = rec.copy(default=default)
             print("New Rec",new_rec)
@@ -734,6 +734,10 @@ new values. """
         self.unlink()
         res_8 = self.browse([8,32])
         res_8.unlink()
+        equipment_obj = self.env['fitness.equipment'].browse(4)
+        equipment_obj.unlink()
+        print("Delete Equipment",equipment_obj)
+
 
     def search_record(self):
         all_records = self.search([])
@@ -809,37 +813,4 @@ new values. """
 
         for record in data:
             print("Trainer ID:", record['trainer_id'])
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -24,6 +24,7 @@
                     <button name="copy_read" type="object" string="Copy" class="oe_highlight"/>
                      <button name="search_record" type="object" string="Search" class="oe_highlight"/>-->
                      <button name="browse_record" type="object" string="Browse,Read" class="oe_highlight"/>
+                     <button name="delete_record" type="object" string="Delete" class="oe_highlight"/>
 
                      <div class="oe_button_box" name="button_box">
                          <button name="action_view_session" type="object"
