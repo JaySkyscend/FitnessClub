@@ -806,7 +806,8 @@ new values. """
 
         limited_result = result_5[:3]
         print("Limited groups", limited_result)
-        
+
+
 
 
 
@@ -881,4 +882,31 @@ new values. """
 
         for record in data:
             print("Trainer ID:", record['trainer_id'])
+
+
+#  Add a button on the form view on the page of a one2many
+    # field. When you click this button it will add a record in the
+    # one2many field.
+
+
+    def action_add_session(self):
+        for record in self:
+            record.session_ids = [( 0 ,0, {
+                  'name':'New Session',
+                  'duration': 1.0,
+                   'notes': 'Auto-created session'
+            })]
+
+
+# Add another button on the page of one2many field when you
+# click on this button it will remove all the records in one2many.
+
+
+
+
+
+
+
+
+
 
