@@ -964,6 +964,82 @@ new values. """
         print("Records in 5 Pair",chunked_data)
 
 
+    @api.model
+    # Used to define a method that works on a recordset (could be multiple records)
+    # Typically used when you want to perform actions on one or more records.
+    """def create_member(self,values):
+        return super().create(values) """
+
+    @api.model_create_single
+    # @api.model_create_single is a decorator derived from @api.model and is used for only create method.
+    # the create method can be used to create a single record and in this case it is named as model_create_single.
+    """ def create(self,vals):
+            vals['code'] = self.env['ir.sequence'].next_by_code('fitness.member')
+            :return super().create(vals) """
+
+
+    @api.model_create_multi
+    #    @api.model_create_multi is a decorator derived from @api.model and is used only for create method.
+    #     # the create method can be used to create multiple records that's why it was renamed as model_create_multi
+     #    Ensures the method can accept a list of dictionaries and return a recordset.
+    """def create(self, vals_list):
+        return super().create(vals_list) """
+
+
+    #@api.onchange
+    # used to trigger logic in form views when a field is changed, without saving to the database
+    # @api.onchange is a decorator which is used to perform activities when you change a field's value.
+    # the onchange methods will be using this api, when we want to update values of other fields on the change of one field we can use this.
+    """ @api.depends('session_ids')
+    def _compute_session_count(self):
+        for rec in self:
+            rec.session_count = len(rec.session_ids)
+             """
+
+   # @api.constrains
+    #  @api.constrains is a decorator which is used to add Object Constraints on the model.
+       # Apart form SQL constraints if we want to add user defined constraints using python code we use this API.
+    # Validates constraints on fields after saving, and raises ValidationError on violations.
+    """ @api.constrains('field1', 'field2')
+def method_name(self):
+    # logic with raise ValidationError
+      """
+
+  #  @api.readonly
+    # marks a field as non-editable in the ui
+    # can be set statically or dynamically
+    # @api.readonly is a decorator which makes the records / method to be readonly and can not do any updates.
+    # mostly search and read methods use this.
+    # readonly=True
+
+ #  @api.returns()
+   # Specifies the return type of a method (usually for compatibility or decorators).
+   # Mainly for chaining or extending core logic, used less often in custom modules.
+   #  @api.returns('self', lambda value: value.id)
+   # def method_name(self):
+   #     # logic
+
+ #  @private
+    # Used to hide internal methods from external RPC calls.
+    # Secures methods from being exposed in the Odoo RPC layer (like XML-RPC or JSON-RPC).
+    #@api.private
+   # def _internal_method(self):
+    # logic
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
