@@ -575,26 +575,43 @@ the comodel.(Use both no and Command operation) """
 
 
         self.ensure_one()
+        #
+        # operations = [
+        #     (4,11),
+        #     Command.link(11),
+        # ]
+        #
+        # self.write({
+        #     'session_ids': operations
+        # })
 
-        operations = [
-            (4,11),
-            Command.link(11),
-        ]
+
+        """" Update M2M field to link a value keeping existing
+values as it is in the M2M field. """
+
+        # equipment_id = 7
+        #
+        # self.write({
+        #     'equipment_ids':[
+        #         (4, equipment_id)
+        #     ]
+        #         })
+
+        """" Update M2M field to remove existing values and add
+new values. """
+
+
+        new_equipment_ids = [7,4]
 
         self.write({
-            'session_ids': operations
+            'equipment_ids': [
+                #(6 , 0, new_equipment_ids),
+                 Command.set(new_equipment_ids)
+            ]
         })
 
 
-        # equipment = self.env['fitness.equipment'].search([('name','=','Treadmill')], limit=1)
-        #
-        # if self and equipment:
-        #     self.write({
-        #         'equipment_ids': [(4,equipment.id,0)]
-        #     })
-        #     print("Equipment added to member.")
-        # else:
-        #     print("Either equipment or member not found.")
+
 
 
     def action_remove_all_equipment(self):
@@ -604,26 +621,48 @@ the comodel.(Use both no and Command operation) """
 
         self.ensure_one()
 
-        self.write({
-            'session_ids':  [
-                # (5,0,0),
-                Command.clear()
-            ]
-        })
+        # self.write({
+        #     'session_ids':  [
+        #         # (5,0,0),
+        #         Command.clear()
+        #     ]
+        # })
 
-        # if self:
-        #     self.write({'equipment_ids':[(5,0,0)]})
-        #     print(f"All equipment removed for {self.name}")
-        # else:
-        #     print("Member not found.")
+
+        """ Update M2M field to remove all values.  """
+
+        self.write({'equipment_ids':[(5,0,0)]})
+        print(f"All equipment removed for {self.name}")
+
+
 
 
     def action_replace_all_equipment(self):
-            self.write({
-                'equipment_ids': [(6, 0,[1,2,3,4])]  # ✅ Use .ids
-            })
-            print(f"Replaced all equipment for {self.name}")
+           # self.ensure_one()
+           #
+           # new_sessions = self.env['fitness.session'].search([('name','in',['Zumba Session','Meditation Session'])])
+           #
+           # self.write({
+           #     'session_ids': [
+           #         # (6,0, new_sessions.ids)
+           #          Command.set(new_sessions.ids)
+           #     ]
+           # })
 
+            # self.write({
+            #     'equipment_ids': [(6, 0,[1,2,3,4])]  # ✅ Use .ids
+            # })
+            # print(f"Replaced all equipment for {self.name}")
+            #
+
+
+          """  Update a compute field using inverse in the field’s
+          definition. """
+
+          for member in self:
+             # for record in self:
+                if member.id == 11:
+                    sessions.total_session_value = 100
 
 
     def copy_read(self):
