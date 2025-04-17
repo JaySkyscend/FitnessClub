@@ -2,7 +2,8 @@
     'name': 'Fitness Club ERP',
     'version':'1.0',
     'summary':'Manage Gym members, trainers , workouts efficiently',
-    'author':'Jay Patel',
+    'author':'Skyscend Business Solutions Pvt Ltd',
+    'description':'This module is used to manage Gym Business',
     'depends':['base'],
     'data':[
       'security/fitness_security.xml',

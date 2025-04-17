@@ -662,10 +662,10 @@ new values. """
           """  Update a compute field using inverse in the field’s
           definition. """
 
-          for member in self:
-             # for record in self:
-                if member.id == 11:
-                    sessions.total_session_value = 100
+          # for member in self:
+          #    # for record in self:
+          #       if member.id == 11:
+          #           sessions.total_session_value = 100
 
 
  #  def copy_read(self):
@@ -849,7 +849,7 @@ new values. """
             'type':'ir.actions.act_window',
             'name':'Session',
             'view_mode':'list,form',
-            'res_model':'member.session',
+            'res_model':'fitness.session',
             'domain':[('member_id','=',self.id)],
             'contex':{'default_member_id':self.id}
         }
@@ -964,13 +964,13 @@ new values. """
         print("Records in 5 Pair",chunked_data)
 
 
-    @api.model
+    #@api.model
     # Used to define a method that works on a recordset (could be multiple records)
     # Typically used when you want to perform actions on one or more records.
     """def create_member(self,values):
         return super().create(values) """
 
-    @api.model_create_single
+    #@api.model_create_single
     # @api.model_create_single is a decorator derived from @api.model and is used for only create method.
     # the create method can be used to create a single record and in this case it is named as model_create_single.
     """ def create(self,vals):
@@ -978,7 +978,7 @@ new values. """
             :return super().create(vals) """
 
 
-    @api.model_create_multi
+    #@api.model_create_multi
     #    @api.model_create_multi is a decorator derived from @api.model and is used only for create method.
     #     # the create method can be used to create multiple records that's why it was renamed as model_create_multi
      #    Ensures the method can accept a list of dictionaries and return a recordset.
@@ -1025,41 +1025,5 @@ def method_name(self):
     #@api.private
    # def _internal_method(self):
     # logic
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
