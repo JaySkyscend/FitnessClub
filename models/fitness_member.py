@@ -228,8 +228,9 @@ class FitnessMember(models.Model):
             # it's like this in other programming languages.
 
 
-            blank_rs = self.env['res.partner']
+            blank_rs = self.env['fitness.member']
             print("Blank recordset",blank_rs)
+
 
 
             members = self.env['fitness.member'].search([])
@@ -329,6 +330,7 @@ class FitnessMember(models.Model):
                 print("Union Member",m.name)
 
             blank_recordset = member.browse([])
+
 
             young_member = member.search([('age', '<', 30)])
             union_recordset = blank_recordset  | young_member | gold_members

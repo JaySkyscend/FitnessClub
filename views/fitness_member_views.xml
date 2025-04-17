@@ -19,6 +19,7 @@
                    <button name="action_suspend" type="object" string="Suspend" state="pending" />
                    <button name="action_close" type="object" string="Close" state="suspend" />
                     <button name="%(action_fitness_session)d" string="Session" type="action"/>
+                     
 
                     <button name="print_environment_info" type="object" string="Print Env Info" class="oe_highlight"/>
                     <button name="copy_read" type="object" string="Copy" class="oe_highlight"/>
