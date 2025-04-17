@@ -12,7 +12,7 @@ class FitnessMember(models.Model):
     _parent_name = "parent_id"
 
 
-    name = fields.Char(string="Member Name",required=True,placeholder="Enter Full Name" ,domain="[('name','like=','N%')]" )
+    name = fields.Char(string="Member Name",required=True,placeholder="Enter Full Name")
     image = fields.Binary(string="Profile Picture")
     related_record = fields.Reference(
         selection=[('fitness.trainer','Trainer'),
@@ -853,6 +853,7 @@ new values. """
             'domain':[('member_id','=',self.id)],
             'contex':{'default_member_id':self.id}
         }
+
 
 
     def browse_record(self):
