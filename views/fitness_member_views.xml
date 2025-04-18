@@ -78,7 +78,8 @@
                         <field name="amount"/>
                         <field name="currency_id" invisible="amount > 0.0" required="amount > 0.0 "/>
 <!--                     <field name="trainer_id" help="Enter the Assigned Trainer Id" options="{'no_create':True,'no_open':True}" domain="[('expertise','in',['Cardio','Yoga'])]"/>-->
-                        <field name="trainer_id" help="Enter the Assigned Trainer Id"  domain="[('expertise','in',['Cardio','Yoga'])]"/>
+<!--                     <field name="trainer_id" help="Enter the Assigned Trainer Id"  domain="[('expertise','in',['Cardio','Yoga'])]"/>-->
+                        <field name="trainer_id" help="Enter the Assigned Trainer Id" />
                         <field name="address" help="Enter your current address"/>
                         <field name="password" password="True" help="Enter the strong Password" copy="False"/>
                         <field name="is_leader" string="Leader"></field>
@@ -281,7 +282,7 @@
 
 
 
-    <menuitem id="menu_fitness_club_root" name="Fitness Club" sequence="1"/>
+<!--    <menuitem id="menu_fitness_club_root" name="Fitness Club" />-->
     <menuitem id="menu_fitness_members" parent="menu_fitness_club_root" action="action_fitness_member" name="Members" sequence="2"/>
     <menuitem id="menu_fitness_members_with_trainer" parent="menu_fitness_club_root" action="action_members_with_trainer" name="Member with trainer" sequence="100"/>-->
 

@@ -12,6 +12,7 @@ class FitnessMember(models.Model):
     _parent_name = "parent_id"
 
 
+
     name = fields.Char(string="Member Name",required=True,placeholder="Enter Full Name")
     image = fields.Binary(string="Profile Picture")
     related_record = fields.Reference(
@@ -250,7 +251,7 @@ class FitnessMember(models.Model):
             print("Fetch Relational Field from recordset")
             print("Trainer_id",members.trainer_id)
 
-            print("Multile record recordset")
+            print("Multiple record recordset")
             equipment_names = members.mapped('equipment_ids').mapped('name')
             print("Equipments:",equipment_names)
 

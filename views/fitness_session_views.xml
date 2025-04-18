@@ -39,7 +39,7 @@
         <field name="view_mode">list,form</field>
     </record>
 
-
+    <menuitem id="menu_fitness_club_root" name="Fitness Club" sequence="1"/>
     <menuitem id="menu_fitness_session" parent="menu_fitness_club_root" action="action_fitness_session" name="Sessions" sequence="4"/>
 
 </odoo>
